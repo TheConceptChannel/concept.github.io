@@ -5,93 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ishan Bhardwaj | Staff Engineer</title>
     <style>
-        /* Minimalist "Staff Engineer" Design */
+        /* CSS STYLES - The Look and Feel */
         :root {
-            --bg-color: #ffffff;
-            --text-primary: #111111;
-            --text-secondary: #666666;
-            --accent: #2563eb; /* Professional Blue */
+            --bg: #ffffff;
+            --text-main: #2d3748;
+            --text-light: #718096;
+            --accent: #2b6cb0; /* Professional Blue */
+            --border: #e2e8f0;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            line-height: 1.6;
+            color: var(--text-main);
             max-width: 800px;
             margin: 0 auto;
-            padding: 80px 20px;
-            line-height: 1.6;
+            padding: 40px 20px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .title {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-            margin-bottom: 2rem;
-        }
-
-        .divider {
-            height: 4px;
-            width: 60px;
-            background-color: var(--text-primary);
-            margin: 2rem 0;
-        }
-
-        .bio {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-        }
-
-        .links a {
-            color: var(--text-primary);
-            text-decoration: none;
+        /* HEADER */
+        header { margin-bottom: 60px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; letter-spacing: -1px; }
+        .role { font-size: 1.25rem; color: var(--text-light); font-weight: 400; }
+        
+        /* SECTIONS */
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; }
+        
+        /* ITEM LISTS (For your Work/Articles) */
+        .item { margin-bottom: 25px; }
+        .item-title { font-weight: 700; font-size: 1.1rem; display: block; color: var(--text-main); text-decoration: none; }
+        .item-title:hover { color: var(--accent); }
+        .item-meta { font-size: 0.9rem; color: var(--text-light); margin-bottom: 5px; }
+        
+        /* CONTACT/LINKS */
+        .social-links a {
             margin-right: 20px;
+            color: var(--accent);
+            text-decoration: none;
             font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.2s;
-        }
-
-        .links a:hover {
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .footer {
-            margin-top: 80px;
-            font-size: 0.9rem;
-            color: #999;
         }
     </style>
 </head>
 <body>
 
-    <h1>Ishan Bhardwaj</h1>
-    <div class="title">Staff Engineer, TechPubs @ Synopsys</div>
-    
-    <div class="divider"></div>
+    <header>
+        <h1>Ishan Bhardwaj</h1>
+        <div class="role">Staff Engineer, TechPubs @ Synopsys</div>
+    </header>
 
-    <div class="bio">
-        <p>I bridge the gap between complex silicon technology and user experience.</p>
-        <p>Currently leading documentation strategy and information architecture at Synopsys. My work focuses on <b>Docs-as-Code</b>, <b>API Documentation</b>, and scaling technical knowledge for enterprise systems.</p>
+    <section>
+        <h2>About</h2>
+        <p>I architect information systems that bridge the gap between complex silicon technology and user experience. Currently leading documentation strategy and <b>Docs-as-Code</b> implementation at Synopsys.</p>
         <p>Based in Bengaluru, India.</p>
-    </div>
+    </section>
 
-    <div class="links">
-        <a href="mailto:ishan@sibhardwaj.com">Contact</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Resume</a>
-        <a href="#">Writing Samples</a>
-    </div>
+    <section>
+        <h2>Selected Works & Thoughts</h2>
+        
+        <div class="item">
+            <span class="item-title">The Shift to Docs-as-Code</span>
+            <div class="item-meta">Philosophy</div>
+            <p>Why modern TechPubs teams must treat documentation exactly like software code—using Git, CI/CD, and automated testing.</p>
+        </div>
 
-    <div class="footer">
-        &copy; 2025 Ishan Bhardwaj. Hosted on GitHub Pages.
-    </div>
+        <div class="item">
+            <span class="item-title">Scaling Knowledge for Enterprise</span>
+            <div class="item-meta">Architecture</div>
+            <p>Strategies for managing documentation across massive, multi-product semiconductor portfolios.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Connect</h2>
+        <div class="social-links">
+            <a href="resume.pdf" target="_blank">Download Resume (PDF)</a>
+            <a href="https://www.linkedin.com/in/YOUR-LINKEDIN-ID/" target="_blank">LinkedIn</a>
+            <a href="mailto:ishanbhardwajsharma@gmail.com">Email</a> 
+        </div>
+    </section>
 
 </body>
 </html>
