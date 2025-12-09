@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NISM Series V-A: Mutual Fund Distributors Certification Guide</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sidebar-width: 300px;
+            --accent-edu: #d97706; /* Amber/Orange for Education */
+            --accent-bg: #fff7ed;
+            --bg-body: #f8fafc;
+            --text-main: #334155;
+            --text-heading: #0f172a;
+            --border: #e2e8f0;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--font-main); 
+            background: var(--bg-body); 
+            color: var(--text-main); 
+            display: flex; 
+            line-height: 1.7;
+        }
+
+        /* --- SIDEBAR NAV --- */
+        .sidebar {
+            width: var(--sidebar-width); 
+            height: 100vh; 
+            background: white; 
+            border-right: 1px solid var(--border);
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            overflow-y: auto; 
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            background: white;
+            position: sticky;
+            top: 0;
+        }
+
+        .doc-title { 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+            color: var(--text-heading); 
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        
+        .exam-meta {
+            font-size: 0.75rem;
+            color: var(--accent-edu);
+            font-weight: 600;
+            background: var(--accent-bg);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .nav-content {
+            padding: 24px;
+            flex-grow: 1;
+        }
+
+        .nav-link { 
+            display: block; 
+            padding: 8px 12px; 
+            color: #64748b; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            border-radius: 6px; 
+            margin-bottom: 2px;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover { 
+            background: #f8fafc; 
+            color: var(--accent-edu); 
+        }
+        
+        .nav-link.active { 
+            background: var(--accent-bg); 
+            color: var(--accent-edu); 
+            font-weight: 600; 
+            border-left-color: var(--accent-edu);
+        }
+
+        .back-home {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: #64748b;
+            text-decoration: none;
+            background: white;
+        }
+        .back-home:hover { color: var(--text-heading); }
+
+        /* --- MAIN CONTENT --- */
+        .content-area {
+            margin-left: var(--sidebar-width);
+            padding: 60px 80px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Typography */
+        h1 { font-size: 2.25rem; color: var(--text-heading); margin-bottom: 32px; letter-spacing: -0.02em; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+        h2 { font-size: 1.75rem; color: var(--text-heading); margin: 60px 0 24px; padding-top: 24px; border-top: 1px dashed var(--border); }
+        h3 { font-size: 1.25rem; color: var(--text-heading); margin: 32px 0 16px; font-weight: 600; }
+        h4 { font-size: 1rem; color: var(--text-heading); margin: 24px 0 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        p { margin-bottom: 16px; }
+        ul, ol { margin-bottom: 24px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+
+        /* Special Components */
+        .info-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .exam-tip {
+            background: var(--accent-bg);
+            border-left: 4px solid var(--accent-edu);
+            padding: 16px 20px;
+            margin: 24px 0;
+            font-size: 0.95rem;
+        }
+        .exam-tip strong { color: #9a3412; }
+
+        /* Tables */
+        .table-wrapper { overflow-x: auto; margin: 32px 0; border-radius: 8px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; background: white; font-size: 0.95rem; }
+        th { background: #f1f5f9; text-align: left; padding: 12px 16px; font-weight: 600; color: var(--text-heading); border-bottom: 1px solid var(--border); }
+        td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
+
+        /* Code/Formula Blocks */
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            margin: 24px 0;
+            line-height: 1.5;
+        }
+
+        /* Tree Diagrams (converted from ASCII) */
+        .tree-diagram {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        .tree-diagram ul { list-style: none; padding-left: 20px; margin-bottom: 0; position: relative; }
+        .tree-diagram ul li { position: relative; margin-bottom: 8px; font-weight: 500; }
+        .tree-diagram ul ul { margin-top: 8px; border-left: 2px solid var(--border); padding-left: 24px; }
+        .tree-diagram ul ul li::before {
+            content: ''; position: absolute; left: -26px; top: 12px; width: 20px; height: 2px; background: var(--border);
+        }
+
+        @media (max-width: 1024px) {
+            .content-area { padding: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+            .content-area { margin-left: 0; padding: 24px; }
+            .nav-content { display: none; } /* Hide nav links on mobile initially */
+            .sidebar:hover .nav-content { display: block; } /* Show on hover/tap */
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="doc-title">NISM Series V-A Guide</div>
+            <span class="exam-meta">Mutual Fund Distributors Certification</span>
+        </div>
+
+        <div class="nav-content">
+            <a href="#exam-details" class="nav-link">Exam Overview</a>
+            <a href="#unit1" class="nav-link">Unit 1: Concept & Role</a>
+            <a href="#unit2" class="nav-link">Unit 2: Fund Structure</a>
+            <a href="#unit3" class="nav-link">Unit 3: Legal & Regulatory</a>
+            <a href="#unit4" class="nav-link">Unit 4: Offer Documents</a>
+            <a href="#unit5" class="nav-link">Unit 5: Distribution</a>
+            <a href="#unit6" class="nav-link">Unit 6: Accounting & Tax</a>
+            <a href="#unit7" class="nav-link">Unit 7: Investor Services</a>
+            <a href="#unit8" class="nav-link">Unit 8: Return & Risk</a>
+            <a href="#unit9" class="nav-link">Unit 9: Scheme Selection</a>
+            <a href="#unit10" class="nav-link">Unit 10: Investment Products</a>
+            <a href="#unit11" class="nav-link">Unit 11: Financial Planning</a>
+            <a href="#unit12" class="nav-link">Unit 12: Model Portfolios</a>
+            <a href="#formulas" class="nav-link">Key Formulas</a>
+        </div>
+
+        <a href="index.html" class="back-home">← Back to Portfolio</a>
+    </aside>
+
+    <main class="content-area">
+        
+        <section id="exam-details">
+            <h1>Comprehensive Study Guide</h1>
+            <div class="info-box">
+                <h4 style="margin-top:0;">Exam Details</h4>
+                <ul style="margin-bottom:0;">
+                    <li><strong>Total Questions:</strong> 100 (Multiple Choice)</li>
+                    <li><strong>Duration:</strong> 2 hours (120 minutes)</li>
+                    <li><strong>Passing Score:</strong> 50% (50 questions)</li>
+                    <li><strong>Negative Marking:</strong> NO (Attempt all questions)</li>
+                    <li><strong>Total Units:</strong> 12</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="unit1">
+            <h2>UNIT 1: Concept and Role of a Mutual Fund</h2>
+            <p><strong>Weightage:</strong> 6% (~6 Questions)</p>
+
+            <h3>Definition and Basic Concept</h3>
+            <p>A mutual fund is a pool of money collected from many investors with similar investment objectives, managed by a professional fund manager on their behalf. The pooled money is invested in securities/assets according to the fund's stated investment objective.</p>
+            
+            <h4>Key Characteristics</h4>
+            <ul>
+                <li><strong>Collective Investment:</strong> Money pooled from many investors</li>
+                <li><strong>Professional Management:</strong> Managed by qualified fund managers</li>
+                <li><strong>Diversification:</strong> Spreads investment across multiple securities</li>
+                <li><strong>Regulated Structure:</strong> Operates under SEBI regulations</li>
+                <li><strong>Liquidity:</strong> Investors can buy/sell units easily</li>
+            </ul>
+
+            <h3>Advantages vs. Disadvantages</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Advantage</th>
+                            <th>Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Diversification</td><td>Reduces unsystematic risk by spreading across securities</td></tr>
+                        <tr><td>Professional Management</td><td>Expert fund managers make investment decisions</td></tr>
+                        <tr><td>Affordability</td><td>Low minimum investment (₹500-5,000)</td></tr>
+                        <tr><td>Liquidity</td><td>Easy redemption without transaction delays</td></tr>
+                        <tr><td>Transparency</td><td>Regular NAV publication and reports</td></tr>
+                        <tr><td>Tax Efficiency</td><td>Certain schemes offer tax benefits (ELSS)</td></tr>
+                        <tr><td>Regulation</td><td>Protected by SEBI oversight</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="exam-tip">
+                <strong>Disadvantages/Risks:</strong> Expense Ratio (fees reduce returns), Liquidity Risk (in stress), and Market Risk (value fluctuation).
+            </div>
+        </section>
+
+        <section id="unit2">
+            <h2>UNIT 2: Fund Structure and Constituents</h2>
+            <p><strong>Weightage:</strong> 4% (~4 Questions)</p>
+
+            <h3>The "Four-Pillar" Structure</h3>
+            <p>Indian Mutual Funds typically follow a 3-tier structure (Sponsor -> Trustee -> AMC), but operationally involve four key constituents.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Entity</th>
+                            <th>Role & Key Functions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sponsor</strong></td>
+                            <td>The promoter who starts the fund. Must contribute at least 40% of the AMC's net worth.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trustee</strong></td>
+                            <td><strong>Protects Investor Interests.</strong> Holds the property of the mutual fund in trust for the benefit of unit holders. Supervises the AMC.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AMC</strong> (Asset Management Co.)</td>
+                            <td><strong>Investment Manager.</strong> Handles day-to-day operations, investment decisions, and marketing.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Custodian</strong></td>
+                            <td><strong>Safeguards Assets.</strong> Holds the securities (shares/bonds) physically or electronically. Independent of the AMC.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Other Service Providers</h4>
+            <ul>
+                <li><strong>RTA (Registrar & Transfer Agent):</strong> Maintains investor records (KYC, Units held, Buying/Selling requests). Examples: CAMS, KFintech.</li>
+                <li><strong>Auditors:</strong> Internal and Statutory auditors to ensure accounts are accurate.</li>
+                <li><strong>Distributors:</strong> Sell units to investors (Banks, IFAs, Brokers).</li>
+            </ul>
+        </section>
+
+        <section id="unit3">
+            <h2>UNIT 3: Legal and Regulatory Environment</h2>
+            <div class="exam-tip"><strong>High Priority Unit:</strong> 10% Weightage (~10 Questions)</div>
+
+            <h3>SEBI Regulatory Framework</h3>
+            <p>The Securities and Exchange Board of India (SEBI) is the primary regulator.</p>
+            <ul>
+                <li><strong>SEBI (Mutual Fund) Regulations, 1996:</strong> The primary regulation governing MFs.</li>
+                <li><strong>Objective:</strong> Protecting Investors, Developing Markets.</li>
+            </ul>
+
+            <h3>KYC (Know Your Customer)</h3>
+            <p>Mandatory for all investors before investing.</p>
+            <ul>
+                <li><strong>Documents:</strong> Identity Proof (PAN/Aadhaar) + Address Proof.</li>
+                <li><strong>In-Person Verification (IPV):</strong> Mandatory.</li>
+                <li><strong>CKYC:</strong> Central KYC registry ensures you only do KYC once across the financial sector.</li>
+            </ul>
+
+            <h3>SEBI Categorization of Schemes</h3>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Risk-o-meter Level</th><th>Type of Scheme</th></tr>
+                    <tr><td>Low Risk</td><td>Debt + Money Market instruments</td></tr>
+                    <tr><td>Moderate</td><td>Balanced schemes</td></tr>
+                    <tr><td>High Risk</td><td>Pure Equity schemes</td></tr>
+                    <tr><td>Very High Risk</td><td>Sector funds, Small cap funds</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="unit4">
+            <h2>UNIT 4: Offer Documents</h2>
+            <p><strong>Weightage:</strong> 6% (~6 Questions)</p>
+
+            <h3>Key Documents</h3>
+            <ol>
+                <li>
+                    <strong>SID (Scheme Information Document):</strong> Detailed legal document. Contains investment objective, asset allocation, fees, risk factors.
+                </li>
+                <li>
+                    <strong>SAI (Statement of Additional Information):</strong> Contains statutory information about the Mutual Fund house (Sponsors, Trustees). Standard across all schemes of that fund.
+                </li>
+                <li>
+                    <strong>KIM (Key Information Memorandum):</strong> A summary of the SID. <strong>Must accompany every application form.</strong> Contains essential info like loads, risks, and historical performance.
+                </li>
+            </ol>
+        </section>
+
+        <section id="unit5">
+            <h2>UNIT 5: Fund Distribution</h2>
+            <p><strong>Weightage:</strong> 8% (~8 Questions)</p>
+
+            <h3>Distribution Channels</h3>
+            <div class="tree-diagram">
+                <ul>
+                    <li>DISTRIBUTION CHANNELS
+                        <ul>
+                            <li><strong>Direct Channels</strong> (No Commission)
+                                <ul>
+                                    <li>AMC Website / Mobile App</li>
+                                    <li>AMC Branch Office</li>
+                                </ul>
+                            </li>
+                            <li><strong>Indirect Channels</strong> (Commission based)
+                                <ul>
+                                    <li>Individual Financial Advisors (IFAs)</li>
+                                    <li>National Distributors (NJ India, Prudent)</li>
+                                    <li>Banks (Bancassurance)</li>
+                                    <li>Stock Brokers</li>
+                                </ul>
+                            </li>
+                            <li><strong>Online Platforms</strong>
+                                <ul>
+                                    <li>MF Utilities, BSE Star MF, NSE NMF II</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <h3>Regular vs. Direct Plans</h3>
+            <ul>
+                <li><strong>Regular Plan:</strong> Sold through a distributor. Expense ratio is higher (includes distributor commission).</li>
+                <li><strong>Direct Plan:</strong> Sold directly by AMC. Expense ratio is lower. Return is slightly higher.</li>
+            </ul>
+
+            <div class="exam-tip">
+                <strong>Commission Disclosure:</strong> Distributors must disclose the commissions they earn to the investor. They cannot charge entry loads.
+            </div>
+        </section>
+
+        <section id="unit6">
+            <h2>UNIT 6: Accounting, Valuation & Taxation</h2>
+            <div class="exam-tip"><strong>High Priority Unit:</strong> 10% Weightage (~10 Questions)</div>
+
+            <h3>Net Asset Value (NAV)</h3>
+            <pre>NAV = (Total Assets - Total Liabilities) / Number of Units Outstanding</pre>
+            <ul>
+                <li>Calculated <strong>Daily</strong> (at market close).</li>
+                <li>Published by 11 AM next day (usually same day evening).</li>
+                <li><strong>Cut-off Time:</strong>
+                    <ul>
+                        <li>Liquid Funds: 1:30 PM (Historical NAV applies)</li>
+                        <li>Other Funds: 3:00 PM (Closing NAV applies)</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Taxation (Updated for FY 2024-25)</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Short Term (STCG)</th>
+                            <th>Long Term (LTCG)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Equity Funds</strong><br>(>65% Equity)</td>
+                            <td><strong>20%</strong><br>(Holding < 1 year)</td>
+                            <td><strong>12.5%</strong><br>(Holding > 1 year)<br><em>*Exempt up to ₹1.25 Lakh</em></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Debt Funds</strong><br>(<65% Equity)</td>
+                            <td><strong>Slab Rate</strong><br>(Added to income)</td>
+                            <td><strong>Slab Rate</strong><br>(Added to income)<br><em>*No Indexation benefit now</em></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><em>Note: Dividends are always added to investor's income and taxed at slab rate.</em></p>
+        </section>
+
+        <section id="unit7">
+            <h2>UNIT 7: Investor Services</h2>
+            <p><strong>Weightage:</strong> 12% (Highest Weightage)</p>
+
+            <h3>Investment Transactions</h3>
+            <ul>
+                <li><strong>Lump Sum:</strong> One-time investment.</li>
+                <li><strong>SIP (Systematic Investment Plan):</strong> Fixed amount at regular intervals. Good for rupee cost averaging.</li>
+                <li><strong>STP (Systematic Transfer Plan):</strong> Transfer from one scheme (usually liquid) to another (usually equity) regularly.</li>
+                <li><strong>SWP (Systematic Withdrawal Plan):</strong> Withdraw fixed amount regularly. Good for retirement income.</li>
+            </ul>
+
+            <h3>Redemption Process</h3>
+            <ul>
+                <li>T+2 or T+3 settlement for Equity/Debt funds.</li>
+                <li>Exit Loads may apply if redeemed early (e.g., 1% if redeemed within 1 year).</li>
+            </ul>
+        </section>
+
+        <section id="unit8">
+            <h2>UNIT 8: Return, Risk and Performance</h2>
+            <p><strong>Weightage:</strong> 10% (~10 Questions)</p>
+
+            <h3>Types of Returns</h3>
+            <ul>
+                <li><strong>Absolute Return:</strong> Simple gain/loss. Good for < 1 year.</li>
+                <li><strong>CAGR (Compound Annual Growth Rate):</strong> The industry standard for periods > 1 year.</li>
+                <li><strong>XIRR:</strong> Used for SIPs or multiple cash flows.</li>
+            </ul>
+
+            <h3>Risk Metrics</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>What it measures</th>
+                            <th>Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Standard Deviation</strong></td><td>Total Volatility</td><td>Higher = Riskier</td></tr>
+                        <tr><td><strong>Beta</strong></td><td>Volatility relative to Market</td><td>Beta > 1 means more volatile than market</td></tr>
+                        <tr><td><strong>Sharpe Ratio</strong></td><td>Risk-adjusted Return</td><td>Higher is better (more return for same risk)</td></tr>
+                        <tr><td><strong>Alpha</strong></td><td>Excess return over benchmark</td><td>Positive alpha = Manager beat the market</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="unit9">
+            <h2>UNIT 9: Scheme Selection</h2>
+            <p><strong>Weightage:</strong> 10% (~10 Questions)</p>
+
+            <h3>Equity Categories</h3>
+            <ul>
+                <li><strong>Large Cap:</strong> Top 100 companies. Stable.</li>
+                <li><strong>Mid Cap:</strong> 101st to 250th companies. Higher growth, higher risk.</li>
+                <li><strong>Small Cap:</strong> 251st onwards. Very high risk.</li>
+                <li><strong>Multi Cap:</strong> Minimum 25% in each (Large, Mid, Small).</li>
+                <li><strong>ELSS:</strong> Tax saving, 3-year lock-in.</li>
+            </ul>
+
+            <h3>Debt Categories</h3>
+            <ul>
+                <li><strong>Liquid Fund:</strong> Up to 91 days maturity. For parking cash.</li>
+                <li><strong>Overnight Fund:</strong> 1 day maturity. Safest.</li>
+                <li><strong>Gilt Fund:</strong> Govt securities. No credit risk, but has interest rate risk.</li>
+            </ul>
+        </section>
+
+        <section id="unit10">
+            <h2>UNIT 10: Investment Products Comparison</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Mutual Fund</th>
+                        <th>PPF</th>
+                        <th>Bank FD</th>
+                        <th>Direct Equity</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Safety</strong></td>
+                        <td>Market Linked</td>
+                        <td>Govt Backed (Highest)</td>
+                        <td>High (Bank Guarantee)</td>
+                        <td>Low (Market Linked)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liquidity</strong></td>
+                        <td>High (T+2 days)</td>
+                        <td>Low (15 years)</td>
+                        <td>High (Penalty applies)</td>
+                        <td>High (T+1 days)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Returns</strong></td>
+                        <td>Variable (High potential)</td>
+                        <td>Fixed (~7.1%)</td>
+                        <td>Fixed (~6-7%)</td>
+                        <td>Variable (Very High)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Taxation</strong></td>
+                        <td>Efficient (LTCG)</td>
+                        <td>Tax Free (EEE)</td>
+                        <td>Taxed at Slab</td>
+                        <td>LTCG applies</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="unit11">
+            <h2>UNIT 11: Financial Planning</h2>
+            
+            <h3>Life Cycle Stages</h3>
+            <ol>
+                <li><strong>Accumulation Phase (Age 20-45):</strong> High risk taking ability. Focus on Equity for wealth creation.</li>
+                <li><strong>Transition Phase (Age 45-60):</strong> Approaching goals. Shift towards balance (Equity + Debt).</li>
+                <li><strong>Distribution Phase (Retirement):</strong> Low risk ability. Focus on Debt/SWP for regular income.</li>
+            </ol>
+            
+            <div class="exam-tip">
+                <strong>Financial Goal Setting:</strong> Goals must be SMART (Specific, Measurable, Achievable, Realistic, Time-bound).
+            </div>
+        </section>
+
+        <section id="unit12">
+            <h2>UNIT 12: Model Portfolios</h2>
+            
+            <h3>Standard Allocation Rules</h3>
+            <p><strong>Rule of 100:</strong> Equity Allocation = (100 - Age). Example: Age 30 should have 70% Equity.</p>
+            
+            <div class="tree-diagram">
+                <ul>
+                    <li><strong>Aggressive Portfolio</strong> (Long Term, >10 years)
+                        <ul><li>80% Equity (Mid/Small Cap focus)</li><li>20% Debt</li></ul>
+                    </li>
+                    <li><strong>Moderate Portfolio</strong> (Medium Term, 5-10 years)
+                        <ul><li>60% Equity (Large Cap/Flexi Cap)</li><li>40% Debt</li></ul>
+                    </li>
+                    <li><strong>Conservative Portfolio</strong> (Short Term, <3 years)
+                        <ul><li>10-20% Equity</li><li>80-90% Debt (Short duration/Liquid)</li></ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="formulas">
+            <h2>Key Formulas Reference</h2>
+            <pre>
+1. NAV = (Assets - Liabilities) / Units
+
+2. Real Return = (1 + Nominal Return) / (1 + Inflation Rate) - 1
+
+3. Cost of Acquisition (Indexed) = Original Cost * (CII Year of Sale / CII Year of Purchase)
+
+4. Sharpe Ratio = (Scheme Return - Risk Free Rate) / Standard Deviation
+
+5. Treynor Ratio = (Scheme Return - Risk Free Rate) / Beta
+            </pre>
+        </section>
+
+    </main>
+
+</body>
+</html>
