@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serverless Finance Engine | Case Study</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE THEME (Matches index.html) --- */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #db2777; /* Pink/Magenta for FinTech */
+            --accent-light: #fce7f3;
+            --gradient-fin: linear-gradient(135deg, #be185d 0%, #db2777 100%);
+            
+            --radius: 16px;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Calistoga', serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* --- NAVIGATION (Simplified for Sub-pages) --- */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .back-btn {
+            background: white;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            background: var(--bg-card);
+            padding: 120px 20px 60px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: var(--gradient-fin);
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        /* --- TECH STACK BADGES --- */
+        .stack-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .stack-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stack-badge span {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* --- ARTICLE LAYOUT --- */
+        .content-wrapper {
+            max-width: 800px;
+            margin: -40px auto 80px; /* Overlap header slightly */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        article {
+            background: white;
+            padding: 60px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid #f1f5f9;
+            
+            /* --- AUTOMATED NUMBERING LOGIC STARTS HERE --- */
+            counter-reset: h2-counter; /* Creates a counter named 'h2-counter' */
+        }
+
+        /* Typography & Numbering */
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin: 48px 0 24px;
+            color: var(--text-main);
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+            
+            /* Numbering Logic */
+            counter-increment: h2-counter; /* Adds 1 to the counter */
+            counter-reset: h3-counter;     /* Resets the sub-counter for new sections */
+        }
+
+        /* This puts the number before the H2 text */
+        h2::before {
+            content: counter(h2-counter) ". "; 
+            color: var(--accent); /* Makes the number pink/magenta */
+            margin-right: 8px;
+        }
+
+        h2:first-of-type { margin-top: 0; }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 32px 0 16px;
+            color: #1e293b;
+            font-weight: 700;
+            
+            /* Numbering Logic */
+            counter-increment: h3-counter;
+        }
+
+        /* This puts the number (e.g., 3.1) before the H3 text */
+        h3::before {
+            content: counter(h2-counter) "." counter(h3-counter) " ";
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-right: 6px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #334155;
+            font-size: 1.05rem;
+        }
+
+        ul, ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: #334155;
+        }
+
+        /* --- DIAGRAM / IMAGE STYLES --- */
+        figure {
+            margin: 40px -20px;
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e2e8f0;
+        }
+
+        figcaption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- HIGHLIGHT BOXES --- */
+        .highlight-box {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 32px 0;
+        }
+
+        /* We disable the automatic numbering for H3s inside highlight boxes 
+           because they are usually titles, not subsections. */
+        .highlight-box h3 { 
+            margin-top: 0; 
+            color: #831843; 
+        }
+        
+        .highlight-box h3::before {
+            content: none; 
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            article { padding: 32px 20px; }
+            figure { margin: 32px -10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    </nav>
+
+    <header>
+        <div style="margin-bottom: 16px; display: inline-block; background: var(--accent-light); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">
+            FinTech Engineering
+        </div>
+        <h1>Serverless, Privacy-First<br>Personal Finance Engine</h1>
+        <p class="subtitle">A custom Financial Data Ingestion & Analytics Pipeline leveraging the Google Workspace ecosystem.</p>
+        
+        <div class="stack-container">
+            <div class="stack-badge"><span></span>Google Cloud Platform</div>
+            <div class="stack-badge"><span></span>Google Apps Script</div>
+            <div class="stack-badge"><span></span>Python</div>
+            <div class="stack-badge"><span></span>JavaScript (ETL)</div>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <article>
+            
+            <h2>Executive Summary</h2>
+            <p>In the current FinTech landscape, users often trade data privacy for convenience. Commercial Personal Finance Management (PFM) apps rely on intrusive bank account scraping, impose rigid categorization taxonomies, and create data silos where investment tracking and expense management rarely intersect.</p>
+            <p>To address these constraints, I architected a custom <strong>Financial Data Ingestion & Analytics Pipeline</strong>. Built on a serverless Google Cloud stack, this system decouples data capture from storage, utilizing an event-driven ETL middleware to normalize transactions in real-time. The result is a zero-latency, privacy-centric ledger that supports granular asset allocation modeling.</p>
+
+            <h2>The Business Challenge</h2>
+            <p>The objective was to solve three critical friction points inherent in commercial FinTech products:</p>
+            <ul>
+                <li><strong>Latency & Reliability:</strong> Third-party aggregators often suffer from broken bank syncs and OTP failures, leading to "stale" financial data.</li>
+                <li><strong>Taxonomy Rigidity:</strong> Standard apps force users into generic categories (e.g., "Food," "Travel") that fail to distinguish between CapEx vs. OpEx in a personal context.</li>
+                <li><strong>Data Sovereignty:</strong> Financial data is a sensitive asset. Handing it to "free" apps introduces privacy risks and vendor lock-in.</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Engineering Goal</h3>
+                <p style="margin-bottom:0;">Build a system that offers the speed of a mobile app, the flexibility of a relational database, and the privacy of a local ledger.</p>
+            </div>
+
+            <h2>System Architecture</h2>
+            <p>The system follows a standard <strong>ETL (Extract, Transform, Load)</strong> pattern, leveraging the Google Workspace ecosystem as a serverless backend.</p>
+
+            <figure>
+                <img src="https://placehold.co/800x400/f1f5f9/475569?text=Figure+1:+System+Architecture+Diagram+(ETL)" alt="System Architecture Diagram">
+                <figcaption>Figure 1: High-Level Architecture showing Data Flow from Ingestion to Analytics</figcaption>
+            </figure>
+
+            <h3>Ingestion Layer (Extract)</h3>
+            <p>To minimize friction, I deployed two distinct <strong>Mobile-First Ingestion Interfaces</strong> using Google Forms:</p>
+            <ul>
+                <li><strong>Investment Ingestion:</strong> Captures asset class (Equity, Debt, Gold), ticker symbol, and capital deployed.</li>
+                <li><strong>Expense Ingestion:</strong> Captures transaction value, category (Need/Want), and payment mode.</li>
+            </ul>
+
+            <h3>Middleware Layer (Transform)</h3>
+            <p>Raw data is intercepted by an Event-Driven Trigger running on <strong>Google Apps Script</strong>. This middleware performs three critical functions:</p>
+            <ul>
+                <li><strong>Sanitization:</strong> Validates numeric inputs and standardizes timestamp formats (ISO 8601).</li>
+                <li><strong>Normalization:</strong> Maps raw category inputs to a standardized backend taxonomy.</li>
+                <li><strong>Routing:</strong> Dynamically routes the data payload to specific monthly shards to prevent database bloat.</li>
+            </ul>
+
+            <h3>Storage & Analytics Layer (Load)</h3>
+            <p>The Master Ledger acts as a relational database where "Investments" and "Expenses" are stored in normalized tables. A separate Analytics Engine queries this data to generate a Real-Time Dashboard.</p>
+
+            <h2>Implementation Logic (The "Secret Sauce")</h2>
+            <p>The core of the system is the <strong>Dynamic Linking Algorithm</strong> that connects the "Spending" module with the "Investing" module—a feature missing in most commercial apps.</p>
+
+            <h3>Automated Asset Allocation Tracking</h3>
+            <p>Unlike standard trackers, this engine treats "Investments" as a distinct outflow category that maps to a Net Worth Asset Class.</p>
+            
+            <figure>
+                <img src="https://placehold.co/800x350/f1f5f9/475569?text=Figure+2:+ETL+Logic+Flowchart" alt="Logic Flowchart">
+                <figcaption>Figure 2: Dual-Entry Accounting Logic Flowchart</figcaption>
+            </figure>
+
+            <p><strong>Logic Example:</strong> When ₹5,000 is logged as "SIP Investment":</p>
+            <ol>
+                <li>The middleware tags it as an "Expense" for cash-flow purposes (money left the bank).</li>
+                <li>Simultaneously, it creates a "Credit" entry in the Asset Register (Asset Value increased).</li>
+                <li>This ensures the <em>Savings Rate</em> metric reflects true wealth accumulation.</li>
+            </ol>
+
+            <h2>Data Visualization & Analytics</h2>
+            <p>The frontend dashboard provides a comprehensive view of financial health, updated instantly upon form submission.</p>
+
+            <figure>
+                <img src="https://placehold.co/800x450/f1f5f9/475569?text=Figure+3:+Dashboard+Interface+Mockup" alt="Dashboard Interface">
+                <figcaption>Figure 3: Real-time Analytics Dashboard</figcaption>
+            </figure>
+
+            <h3>Key Metrics Monitored:</h3>
+            <ul>
+                <li><strong>Monthly Burn Rate:</strong> Operational expenditure vs. budget caps.</li>
+                <li><strong>True Savings Rate:</strong> (Investments + Cash Retained) / Total Income.</li>
+                <li><strong>Asset Allocation Delta:</strong> Current Portfolio split (e.g., 60% Equity / 40% Debt) vs. Target Allocation.</li>
+            </ul>
+
+            <h2>Future Roadmap</h2>
+            <p>To scale this system beyond simple tracking into Predictive Analytics, I am currently developing a Python microservice using the <code>gspread</code> and <code>pandas</code> libraries.</p>
+            <ul>
+                <li><strong>Monte Carlo Simulations:</strong> Forecasting portfolio growth based on historical volatility.</li>
+                <li><strong>XIRR Calculation:</strong> Automating complex return calculations.</li>
+                <li><strong>Anomaly Detection:</strong> Using <code>scikit-learn</code> to flag spending outliers.</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>This project demonstrates that robust financial engineering does not require enterprise-grade budgets. By leveraging low-code tools with custom scripting and strict data discipline, I built a system that offers 100% data sovereignty, zero maintenance costs, and infinite customizability.</p>
+
+        </article>
+
+        <footer style="text-align: center; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem;">
+            &copy; 2025 Ishan Bhardwaj. <br>
+            <a href="#" style="color: var(--text-muted); text-decoration: none;">View Source on GitHub</a>
+        </footer>
+    </div>
+
+</body>
+</html>
