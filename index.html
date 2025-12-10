@@ -3,483 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ishan Bhardwaj - Staff Engineer, TechPubs at Synopsys. Expert in API documentation, Docs-as-Code, and Semiconductor IP content strategy.">
-    <title>Ishan Bhardwaj | Staff Engineer & Architect</title>
+    <title>The Engineering of Wealth & Tech | Ishan Bhardwaj</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            /* VIBRANT PROFESSIONAL PALETTE */
-            --bg-body: #f8fafc;
-            --bg-card: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            
-            /* Primary Gradient (Deep Royal Blue to Electric Indigo) */
-            --gradient-primary: linear-gradient(135deg, #1e40af 0%, #6366f1 100%);
-            --color-accent: #4f46e5; 
-            
-            /* Status/Tag Colors */
-            --color-tech: #0284c7;   /* Sky Blue */
-            --color-arch: #7c3aed;   /* Violet */
-            --color-strat: #059669;  /* Emerald */
-            --color-fin: #db2777;    /* Pink/Magenta for Finance */
-            --color-edu: #d97706;    /* Amber for Education */
-            
-            --radius: 16px;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
-            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-            --font-main: 'Inter', sans-serif;
-            --font-heading: 'Calistoga', serif;
+            --primary: #4f46e5;      /* Indigo */
+            --secondary: #ec4899;    /* Pink */
+            --accent: #0ea5e9;       /* Sky */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
+        
         body {
-            font-family: var(--font-main);
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Spline Sans', sans-serif;
+            background: var(--light);
+            color: var(--dark);
             overflow-x: hidden;
         }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 10px 8px;
-            border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.6);
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            display: flex;
-            gap: 8px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.85rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.2s ease;
-        }
-
-        nav a:hover {
-            color: var(--color-accent);
-            background: #f1f5f9;
-        }
-
-        /* --- HEADER --- */
-        header {
-            background: var(--bg-card);
-            padding: 180px 20px 100px;
-            text-align: center;
-            border-bottom: 1px solid #e2e8f0;
-            background-image: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08), transparent 40%),
-                              radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.05), transparent 40%);
-        }
-
-        h1 {
-            font-family: var(--font-heading);
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
-        }
-
-        .role {
-            font-size: 1.35rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            margin-bottom: 32px;
-        }
-        
-        .location {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #f0f9ff;
-            color: #0369a1;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid #bae6fd;
-        }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 80px 24px;
-        }
-
-        section { margin-bottom: 120px; }
-
-        h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: var(--text-main);
-        }
-
-        /* --- ABOUT BOX --- */
-        .about-box {
-            background: white;
-            padding: 40px;
-            border-radius: 24px;
-            border: 1px solid #e2e8f0;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .about-box::before {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; height: 100%; width: 6px;
-            background: var(--gradient-primary);
-        }
-
-        /* --- WORK GRID --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .card {
-            background: var(--bg-card);
-            padding: 32px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            top: 0;
-        }
-
-        .card:hover {
-            top: -8px;
-            box-shadow: var(--shadow-lg);
-            border-color: #e2e8f0;
-        }
-
-        .card-category {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-
-        .card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 24px;
-            flex-grow: 1;
-            line-height: 1.6;
-        }
-
-        .card-link {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--color-accent);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* --- SKILLS --- */
-        .skill-group h3 {
-            font-size: 1.1rem;
-            margin-bottom: 16px;
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .tag {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            color: #475569;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .tag.highlight {
-            background: #eff6ff;
-            color: #2563eb;
-            border-color: #dbeafe;
-            font-weight: 600;
-        }
-
-        /* --- CERTIFICATIONS --- */
-        .cert-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px;
-            background: white;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            border: 1px solid #f1f5f9;
+            padding: 24px 5%;
+            position: absolute;
+            width: 100%;
+            z-index: 100;
         }
-        .cert-title { font-weight: 600; font-size: 1.05rem; }
-        .cert-issuer { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block;
-            background: var(--text-main);
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--dark);
+            text-decoration: none;
+            letter-spacing: -0.03em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .cta-btn {
+            background: var(--dark);
             color: white;
-            padding: 14px 32px;
+            padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+            transition: transform 0.2s;
         }
         
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
-            background: black;
+        .cta-btn:hover { transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 0 5%;
+            background: radial-gradient(circle at 90% 10%, #e0e7ff 0%, transparent 40%);
         }
 
-        .btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border: 2px solid #e2e8f0;
-            box-shadow: none;
+        .hero-text h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .btn-outline:hover {
-            background: white;
-            border-color: var(--text-main);
-            transform: translateY(-2px);
+        .hero-text p {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.6;
         }
 
-        /* --- FOOTER --- */
-        footer {
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.3s;
+        }
+        
+        .hero-image img:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+
+        /* --- FEATURE GRID --- */
+        .features {
+            padding: 100px 5%;
+        }
+
+        .section-header {
             text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid #e2e8f0;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            margin-bottom: 60px;
         }
 
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: white;
+        }
+
+        /* Colorful Accents for Cards */
+        .card.finance { background: linear-gradient(to bottom right, #fff, #f0f9ff); border-bottom: 6px solid var(--accent); }
+        .card.market { background: linear-gradient(to bottom right, #fff, #fce7f3); border-bottom: 6px solid var(--secondary); }
+        .card.tech { background: linear-gradient(to bottom right, #fff, #eef2ff); border-bottom: 6px solid var(--primary); }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .card p { color: #64748b; line-height: 1.6; }
+
+        /* --- MENTORSHIP BANNER --- */
+        .mentorship {
+            background: var(--dark);
+            color: white;
+            margin: 0 5% 100px;
+            border-radius: 32px;
+            padding: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mentorship::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(45deg, rgba(79,70,229,0.3), transparent);
+        }
+
+        .mentorship-content { position: relative; z-index: 10; }
+        
+        .mentorship h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- MOBILE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            header { padding-top: 140px; }
-            nav { width: 90%; justify-content: center; font-size: 0.8rem; }
-            .cert-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
+            .hero-text h1 { font-size: 3rem; }
+            .hero-text p { margin: 0 auto 40px; }
+            .nav-links { display: none; } /* Simplified for demo */
+            .mentorship { padding: 40px 20px; }
+            .mentorship h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#resources">Resources</a> <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="#" class="logo">SiWorld.</a>
+        <div class="nav-links">
+            <a href="#resources">Resources</a>
+            <a href="portfolio.html">My Portfolio</a>
+            <a href="#mentorship">Mentorship</a>
+        </div>
+        <a href="#" class="cta-btn">Book Consultation</a>
     </nav>
 
-    <header>
-        <div class="location">📍 Bengaluru, Karnataka</div>
-        <h1>Ishan Bhardwaj</h1>
-        <p class="role">Staff Engineer, TechPubs @ Synopsys</p>
-        <div style="margin-top: 32px;">
-            <a href="#work" class="btn">View Portfolio</a>
-            <a href="resume.pdf" class="btn btn-outline" style="margin-left: 12px;">Resume</a>
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Engineering Wealth & Systems.</h1>
+            <p>A digital hub for Staff-level engineering strategies, personal finance architectures, and market intelligence.</p>
+            <div style="display: flex; gap: 16px; justify-content: center;">
+                <a href="#resources" class="cta-btn" style="background: var(--primary);">Explore Hub</a>
+                <a href="portfolio.html" class="cta-btn" style="background: white; color: var(--dark); border: 1px solid #e2e8f0;">View Portfolio</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://placehold.co/600x600/1e1e2e/FFF?text=System+Architecture+Visual" alt="Platform Dashboard">
         </div>
     </header>
 
-    <div class="container">
+    <section id="resources" class="features">
+        <div class="section-header">
+            <h2>Knowledge Engines</h2>
+            <p>Curated resources for engineers and investors.</p>
+        </div>
 
-        <section id="about">
-            <div class="about-box">
-                <p style="font-size: 1.25rem; color: #1e293b; margin-bottom: 24px; font-weight: 500;">
-                    I architect information systems that bridge the gap between <span style="color: var(--color-accent);">complex silicon technology</span> and user experience.
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-muted);">
-                    As a Staff Engineer at Synopsys with over 8 years of experience, I lead documentation strategy for high-speed protocols (PCIe, CXL) and drive the <b>Docs-as-Code</b> transformation. My background includes an M.Tech in Microelectronics from BITS Pilani, giving me the technical depth to analyze RTL code and hardware specs directly.
-                </p>
-            </div>
-        </section>
+        <div class="grid">
+            <a href="finance-tracker.html" class="card tech">
+                <h3>Serverless Finance</h3>
+                <p>A privacy-first personal finance engine built on Google Cloud. Zero cost, 100% data sovereignty.</p>
+            </a>
 
-        <section id="work">
-            <h2>Featured Projects</h2>
-            <div class="grid">
-                
-                <a href="#" class="card">
-                    <span class="card-category" style="color: var(--color-arch);">Architecture</span>
-                    <h3>Information Architecture at Scale</h3>
-                    <p>Managed end-to-end IA for a massive portfolio of 9 flagship simulation products (RedHawk-SC, Totem-SC), ensuring structural integrity across diverse engineering verticals.</p>
-                    <div class="card-link">View Strategy →</div>
-                </a>
+            <a href="nism-study-guide.html" class="card finance">
+                <h3>NISM Certification</h3>
+                <p>Comprehensive study guide for Mutual Fund Distributors (Series V-A). Formulas, notes, and strategies.</p>
+            </a>
 
-                <a href="#" class="card">
-                    <span class="card-category" style="color: var(--color-tech);">API Documentation</span>
-                    <h3>Python API Analysis</h3>
-                    <p>Authored comprehensive Python API Reference Manuals for Ansys Seascape libraries by analyzing raw source code to define functions and attributes accurately.</p>
-                    <div class="card-link">View Project →</div>
-                </a>
-
-                <a href="#" class="card">
-                    <span class="card-category" style="color: var(--color-strat);">Automation</span>
-                    <h3>Tooling & Perforce Automation</h3>
-                    <p>Developed custom Perforce scripts to validate file status and integrity, eliminating manual version control errors and optimizing the Docs-as-Code pipeline.</p>
-                    <div class="card-link">View Code Strategy →</div>
-                </a>
-
-                <a href="#" class="card">
-                    <span class="card-category" style="color: var(--color-tech);">Hardware Specs</span>
-                    <h3>PCIe & CXL Interface Docs</h3>
-                    <p>Translated register-level specifications (RTL) into developer-ready Databooks for High-Speed Controllers, directly bridging hardware design with user implementation.</p>
-                    <div class="card-link">View Details →</div>
-                </a>
-
-            </div>
-        </section>
-
-        <section id="resources">
-            <h2>Personal Labs & Resources</h2>
-            <p style="margin-bottom:32px; color:var(--text-muted);">Explorations in FinTech, market analysis, and educational resources.</p>
-            <div class="grid">
-                
-                <a href="blogs/finance-tracker.html" class="card">
-                    <span class="card-category" style="color: var(--color-fin);">FinTech Eng</span>
-                    <h3>Serverless Finance Engine</h3>
-                    <p>A privacy-first personal finance tracker architected on Google Cloud using Python. Focuses on serverless scalability and data security.</p>
-                    <div class="card-link">View Case Study →</div>
-                </a>
-
-                <a href="market-updates.html" class="card">
-                    <span class="card-category" style="color: var(--color-strat);">Market Intelligence</span>
-                    <h3>Market Analysis Series</h3>
-                    <p>Daily summaries and analysis of market trends, IPOs, and stock recommendations. (Currently featuring Nov 3 - Nov 11 highlights).</p>
-                    <div class="card-link">Read Updates →</div>
-                </a>
-
-                <a href="knowledge_articles/nism-study-guide.html" class="card">
-                    <span class="card-category" style="color: var(--color-edu);">Certification</span>
-                    <h3>NISM Series V-A Guide</h3>
-                    <p>Comprehensive notes and study material for the Mutual Fund Distributors Certification Examination.</p>
-                    <div class="card-link">View Study Notes →</div>
-                </a>
-
-                <a href="app-user-guide.html" class="card">
-                    <span class="card-category" style="color: var(--color-tech);">Tech Writing</span>
-                    <h3>In-App User Guide (v24R.1)</h3>
-                    <p>Example of end-user documentation illustrating structure, clarity, and navigational flow for mobile application features.</p>
-                    <div class="card-link">View Documentation →</div>
-                </a>
-
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Expertise</h2>
+            <a href="market-updates.html" class="card market">
+                <h3>Market Intelligence</h3>
+                <p>Daily analysis of Indian Markets, Global Cues, and Sector Rotation strategies.</p>
+            </a>
             
-            <div class="skill-group">
-                <h3>Core Technologies</h3>
-                <div class="tags">
-                    <span class="tag highlight">Python (Scripting)</span>
-                    <span class="tag highlight">XML/XSLT</span>
-                    <span class="tag highlight">DITA XML</span>
-                    <span class="tag">HTML/CSS</span>
-                    <span class="tag">Rest API (JSON)</span>
+            <a href="#" class="card" style="background: #f8fafc; border: 2px dashed #e2e8f0; display: flex; align-items: center; justify-content: center; text-align: center;">
+                <div>
+                    <h3 style="font-size: 1.2rem; color: #94a3b8;">Docs & Gear</h3>
+                    <p>Coming Soon</p>
                 </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="mentorship">
+        <div class="mentorship">
+            <div class="mentorship-content">
+                <h2>Level Up Your Career</h2>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px; color: #cbd5e1;">
+                    1:1 Strategy sessions for Senior Writers moving to Staff Engineering roles. Resume reviews, Docs-as-Code implementation, and career architecture.
+                </p>
+                <a href="#" class="cta-btn" style="background: white; color: var(--dark); padding: 16px 32px; font-size: 1.1rem;">Start Mentorship</a>
             </div>
+        </div>
+    </section>
 
-            <div class="skill-group">
-                <h3>Tools & Platforms</h3>
-                <div class="tags">
-                    <span class="tag highlight">Oxygen XML Editor</span>
-                    <span class="tag highlight">Perforce (P4)</span>
-                    <span class="tag highlight">Git/GitHub</span>
-                    <span class="tag">Azure DevOps</span>
-                    <span class="tag">Jira/Confluence</span>
-                    <span class="tag">Adobe FrameMaker</span>
-                </div>
-            </div>
+    <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem;">
+        &copy; 2025 Ishan Bhardwaj. All Rights Reserved.
+    </footer>
 
-            <div class="skill-group">
-                <h3>Domain Knowledge</h3>
-                <div class="tags">
-                    <span class="tag highlight">EDA / Semiconductors</span>
-                    <span class="tag">PCIe / CXL Protocols</span>
-                    <span class="tag">Agile / Scrum</span>
-                    <span class="tag">Information Architecture</span>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Education</h2>
-            <div class="cert-item">
-                <span class="cert-title">M.Tech in Microelectronics</span>
-                <span class="cert-issuer">BITS Pilani (2021-2023)</span>
-            </div>
-            <div class="cert-item">
-                <span class="cert-title">B.Tech in Electronics & Communication</span>
-                <span class="cert-issuer">Guru Nanak Dev University</span>
-            </div>
-        </section>
-
-        <section id="contact" style="text-align: center;">
-            <h2 style="margin-bottom: 20px;">Let's Connect</h2>
-            <p style="margin-bottom: 40px; color: var(--text-muted);">
-                Always interested in discussing documentation strategy, AI in TechPubs, and semiconductor innovation.
-            </p>
-            <div>
-                <a href="https://linkedin.com/in/ishan-bhardwaj-6960b716a" target="_blank" class="btn">LinkedIn</a>
-                <a href="mailto:ishanbhardwajsharma@gmail.com" class="btn btn-outline" style="margin-left: 10px;">Email Me</a>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Ishan Bhardwaj. Built with ❤️ in Bengaluru.</p>
-        </footer>
-
-    </div>
-
+</body>
+</html>
 </body>
 </html>
